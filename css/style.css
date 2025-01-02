@@ -29,13 +29,19 @@ font-family: 'Russo One', sans-serif;
   --color-lightblue: #556DA3;
   --color-blue: #497480;
   --color-wht-alpha: rgba(255, 255, 255, 0.8);
+
   --fontfam-p: 'Poppins', sans-serif;
-  --fontfam-h: 'Bangers', cursive;
+  --fontfam-h: 'Coming Soon', cursive;
   --fontfam-type: 'Courier New', Courier, monospace;
+
   --font-h1: 3.8rem;
   --font-h2: 3.2rem;
-  --font-h3: 1.6rem;
-  --font-p: 1.2rem;
+  --font-h3: 2rem;
+  --font-p: 1.3rem;
+
+  --shadow: .25em .25em .75em rgba(32, 48, 66, .50),
+            .125em .125em .25em rgba(32, 48, 66, .25);
+            /* right down blur color */
 }
 
 
@@ -44,15 +50,14 @@ html {
 }
 
 *,
-*::before,
+*::before, 
 *::after {
     box-sizing: border-box;
 }
 
-/*when the screen is BIGGER for pc */
+/*for BIGGER screen*/
 @media (min-width: 800px) {
     :root {
-        --font-h1: 4.2rem;
         --font-h2: 3.75rem;
         --font-h3: 2rem;
         --font-p: 1.5rem;
@@ -83,7 +88,7 @@ h3 {
     line-height: 1.1;
     margin: 0;
     font-family: var(--fontfam-h);
-    font-weight: 100;
+    font-weight: 800;
 }
 
 h1 {
@@ -96,11 +101,10 @@ h2 {
 
 h3 {
     font-size: var(--font-h3);
-    font-weight: 600;
 }
 
 .section__title {
-    margin: 0;
+    margin-bottom: .25em;
 }
 
 .section__subtitle {
@@ -111,8 +115,10 @@ h3 {
 .section__subtitle--intro,
 .section__subtitle--works {
     background: var(--color-wht-alpha);
-    color:rgba(32, 48, 66, 0.8);
+    color:rgb(32, 48, 66);
     font-weight: 300;
+    margin-bottom: .8em;
+    padding: .25em 1em;
 }
 
 
@@ -123,19 +129,85 @@ nav { display: none; }
     position: relative;
 }
 
+.intro__img {
+    box-shadow: var(--shadow);
+    width: 70%;
+    margin: 0 auto;
+}
+
 @media (min-width: 600px) {
     .intro {
         display: grid;
         width: min-content;
+        margin: 0 auto;
+        grid-column-gap: 1em;
         grid-template-areas: 
         "img title"
         "img subtitle";
-        grid-template-columns: min-content max-content;
+        /*first row columns are named "img" and "title"
+        second row columns are "img" and "subtitle"
+        the first column rows are merged!!*/
+        grid-template-columns: min-content max-content; 
+        /*first column adjusts to smallest content and the second adjust to biggest content */
     }
 
     .intro__img {
         grid-area: img;
         min-width: 250px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .section__subtitle--intro {
+        align-self: start;
+        grid-column: -1 / 1; /* same as 1 / 3. -1 means counting from the last.coersing to use the entire row despite initially .section__subtitle--intro was assigned the cell of the right bottom only. */
+        grid-row: 2 / 3;
+        text-align: right;
+        position: relative;
+        left: -1.5em;
+        width: calc(100% + 1.5em);
     }
 }
 
+
+/* about me */
+
+.aboutme {
+    background-color: var(--color-bg-alpha);
+    background-image: url(../img/notes_bg.png);
+    background-size: cover;
+    /* background-blend-mode: multiply; */
+    text-align: center;
+}
+
+.section__title--about {
+    position: relative;
+}
+
+.section__title--about::after {
+    content: '';
+    display: block;
+    width: 3em;
+    height: 1px;
+    margin: .5em auto 1em;
+    background: var(--color-wht-alpha);
+}
+
+.about_me {
+    margin: 0 auto;
+}
+
+
+@media (min-width: 800px) {
+    .about {
+        display: flex;
+        max-width: 1000px;
+        margin: 0 auto;
+        justify-content: space-around;
+        column-gap: 2em;
+    }
+
+    .about_me {
+        flex: 1;        
+    }
+}
