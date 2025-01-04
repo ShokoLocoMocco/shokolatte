@@ -82,6 +82,28 @@ img {
     max-width: 100%;
 }
 
+/* buttons */
+
+.btn {
+    display: inline-block;
+    padding: .5em 1.5em;
+    background: var(--color-lightblue);
+    color: var(--color-bg-yellow);
+    text-decoration: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: transform 200ms ease-in-out;
+    font-family: var(--fontfam-h);
+    font-weight: bold;
+    margin-top: 1em;
+    /* border-top-left-radius: 10px; 
+    border-bottom-right-radius: 10px; */
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
 h1,
 h2,
 h3 {
@@ -101,6 +123,7 @@ h2 {
 
 h3 {
     font-size: var(--font-h3);
+    color: var(--color-bg-yellow);
 }
 
 .section__title {
@@ -190,7 +213,7 @@ nav { display: none; }
     width: 3em;
     height: 1px;
     margin: .5em auto 1em;
-    background: var(--color-wht-alpha);
+    background: var(--color-bg-yellow);
 }
 
 .about_me {
