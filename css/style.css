@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Caveat+Brush&family=Coming+Soon&family=Dancing+Script:wght@700&family=Fredericka+the+Great&family=Kaushan+Script&family=Open+Sans:ital,wght@0,300;0,400;1,400&family=Pacifico&family=Passion+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,800&family=Raleway:wght@200;400;700&family=Rubik+Moonrocks&family=Rubik:wght@300;400&family=Russo+One&display=swap');
 /*--------------------------------------------------------------
 google fonts
 font-family: 'Bangers', cursive;
@@ -17,6 +16,16 @@ font-family: 'Rubik Moonrocks', cursive;
 font-family: 'Russo One', sans-serif;
 --------------------------------------------------------------*/
 
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Caveat+Brush&family=Coming+Soon&family=Dancing+Script:wght@700&family=Fredericka+the+Great&family=Kaushan+Script&family=Open+Sans:ital,wght@0,300;0,400;1,400&family=Pacifico&family=Passion+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,800&family=Raleway:wght@200;400;700&family=Rubik+Moonrocks&family=Rubik:wght@300;400&family=Russo+One&display=swap');
+
+*,
+*::before, 
+*::after {
+    box-sizing: border-box;
+}
+
+
+
 :root {
   --color-bg: #203042;
   --color-bg-alpha: rgba(32, 48, 66, 0.8);
@@ -34,9 +43,9 @@ font-family: 'Russo One', sans-serif;
   --fontfam-h: 'Coming Soon', cursive;
   --fontfam-type: 'Courier New', Courier, monospace;
 
-  --font-h1: 3.8rem;
-  --font-h2: 3.2rem;
-  --font-h3: 2rem;
+  --font-h1: 3rem;
+  --font-h2: 2.75rem;
+  --font-h3: 1.75rem;
   --font-p: 1.3rem;
 
   --shadow: .25em .25em .75em rgba(32, 48, 66, .50),
@@ -49,23 +58,32 @@ html {
     font-size: 10px;
 }
 
-*,
-*::before, 
-*::after {
-    box-sizing: border-box;
+
+/*for BIGGEST screen*/
+
+@media (min-width: 600px) {
+    :root {
+        --font-h1: 2.8rem;
+        --font-h2: 2.5rem;
+        --font-h3: 1.8rem;
+        --font-p: 1.5rem;
+    }
 }
 
-/*for BIGGER screen*/
 @media (min-width: 800px) {
     :root {
-        --font-h2: 3.75rem;
+        --font-h1: 3.6rem;
+        --font-h2: 3.4rem;
         --font-h3: 2rem;
         --font-p: 1.5rem;
     }
 }
 
+
+
+
 body {
-    background-color: var(--color-lightblue);
+    background: var(--color-lightblue);
     color: var(--color-wht-alpha);
     font-family: var(--fontfam-p);
     font-size: var(--font-p);
@@ -82,11 +100,29 @@ img {
     max-width: 100%;
 }
 
+/*
+@media (min-width: 800px) {
+    img {
+        max-width: 15%;
+    }
+}
+*/
+
+strong { 
+    font-weight: 900;
+}
+
+:focus {
+    border-top-left-radius: 10px; 
+    border-bottom-right-radius: 10px;
+    border-color: var(--color-lightblue);
+}
+
 /* buttons */
 
 .btn {
     display: inline-block;
-    padding: .5em 1.5em;
+    padding: .5em 2em;
     background: var(--color-lightblue);
     color: var(--color-bg-yellow);
     text-decoration: none;
@@ -95,13 +131,13 @@ img {
     transition: transform 200ms ease-in-out;
     font-family: var(--fontfam-h);
     font-weight: bold;
-    margin-top: 1em;
+    margin-top: .5em;
     /* border-top-left-radius: 10px; 
     border-bottom-right-radius: 10px; */
 }
 
 .btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 h1,
@@ -133,10 +169,11 @@ h3 {
 .section__subtitle {
     margin: 0;
     font-size: var(--font-h3);
+    font-style: italic;
 }
 
 .section__subtitle--intro,
-.section__subtitle--works {
+.section__subtitle--personal {
     background: var(--color-wht-alpha);
     color:rgb(32, 48, 66);
     font-weight: 300;
@@ -148,6 +185,10 @@ h3 {
 /* header */
 nav { display: none; }    
 
+
+
+/*  Intro section  */
+
 .intro {
     position: relative;
 }
@@ -158,6 +199,12 @@ nav { display: none; }
     margin: 0 auto;
 }
 
+.section__title--intro strong {
+    display: block;
+    font-size: 1.3em;
+}
+
+
 @media (min-width: 600px) {
     .intro {
         display: grid;
@@ -165,32 +212,40 @@ nav { display: none; }
         margin: 0 auto;
         grid-column-gap: 1em;
         grid-template-areas: 
-        "img title"
-        "img subtitle";
+            "img title"
+            "img subtitle";
         /*first row columns are named "img" and "title"
         second row columns are "img" and "subtitle"
         the first column rows are merged!!*/
-        grid-template-columns: min-content max-content; 
+        grid-template-columns: min-content max-content;
         /*first column adjusts to smallest content and the second adjust to biggest content */
     }
 
     .intro__img {
         grid-area: img;
-        min-width: 250px;
+        min-width: 200px;
         position: relative;
-        z-index: 1;
+        z-index: 2;
     }
 
     .section__subtitle--intro {
         align-self: start;
         grid-column: -1 / 1; /* same as 1 / 3. -1 means counting from the last.coersing to use the entire row despite initially .section__subtitle--intro was assigned the cell of the right bottom only. */
-        grid-row: 2 / 3;
+        grid-row: 2;
         text-align: right;
         position: relative;
         left: -1.5em;
         width: calc(100% + 1.5em);
     }
 }
+
+@media (min-width: 900px) {
+    .section__title--intro strong {
+        display: inline;
+        font-size: 1.2em;
+    }
+}
+
 
 
 /* about me */
@@ -216,8 +271,14 @@ nav { display: none; }
     background: var(--color-bg-yellow);
 }
 
+.about {
+    margin-bottom: 4em;
+}
+
 .about_me {
+    max-width: 450px;
     margin: 0 auto;
+    margin-bottom: 3em;
 }
 
 
@@ -225,12 +286,78 @@ nav { display: none; }
     .about {
         display: flex;
         max-width: 1000px;
-        margin: 0 auto;
+        margin: 2em auto;
         justify-content: space-around;
-        column-gap: 2em;
+        column-gap: 3em;
     }
 
     .about_me {
-        flex: 1;        
+        flex: 1;
+        margin-top: 1.5em;     
     }
 }
+
+/* who i am */
+.mypersonal {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.image-container {
+    width: 80%;
+    height: 420px;
+    height: calc(width * .3);
+    overflow: hidden; /* Crop overflow */
+    margin: 0 auto;
+}
+.personal__img {
+    width: 100%; /* Fill the parent width */
+    height: 60%; /* Fill the parent height */
+    object-fit: cover; /* Crop the image */
+    object-position: center; /* Center the cropped area */
+    box-shadow: var(--shadow);
+}
+
+
+/* Bigger Screen */
+@media (min-width: 800px) {
+    .mypersonal {
+        display: grid;
+        grid-template-columns: 1fr 200px; /*left column is 1fr and right is 200px */
+        grid-template-areas: 
+            "title img"
+            "subtitle img"
+            "text img";
+        grid-column-gap: 2em;
+    }
+
+    .section__title--personal {
+        grid-area: title;
+    }
+
+
+    .section__subtitle--personal {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        position: relative;
+        left: -1em;
+        width: calc(100% + 2em);
+        padding-left: 1em;
+        padding-right: calc(200px + 4em);
+    }
+
+    .image-container {
+        width: 100%;
+
+        grid-area: img;
+        position: relative;
+        z-index: 2;
+    }
+
+    .personal__img {
+        width: 100%;
+    }
+
+}
+
+
