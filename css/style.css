@@ -291,7 +291,8 @@ nav { display: none; }
         column-gap: 3em;
     }
 
-    .about_me {
+    .about_me,
+    .personal_me {
         flex: 1;
         margin-top: 1.5em;     
     }
@@ -359,5 +360,43 @@ nav { display: none; }
     }
 
 }
+
+
+/* my work */
+
+.myworks {
+    background-color: var(--color-bg);
+    color: var(--color-bg-ligtblue);
+    text-align: center;
+}
+
+.section__subtitle--works {
+    color: var(--color-bg-yellow);
+    margin-bottom: 1em;
+}
+
+.work {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.work__item {
+    align-content: center;
+    margin: 0 auto;
+    background: var(--color-bg);
+    overflow: hidden;
+}
+
+.work__img {
+    transition: 
+    transform 750ms cubic-bezier(.5, 0, .5, 1),
+    opacity 250ms linear;
+}
+
+.work__img:hover {
+    transform: scale(1.65);
+    opacity: .65;
+}
+
 
 
