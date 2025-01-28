@@ -185,7 +185,10 @@ h3 {
     font-size: var(--font-h2);
 }
 
-
+.project-btn {
+    text-align: center;
+    margin-bottom: 3em;
+}
 
 /* header */
 
@@ -585,7 +588,7 @@ header {
 
 .portfolio-item-one p,
 .portfolio-item-one img {
-    max-width: 750px;
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
